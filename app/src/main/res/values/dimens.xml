@@ -2,4 +2,12 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="constraint_top">8dp</dimen>
+    <dimen name="constraint_bottom">8dp</dimen>
+    <dimen name="constraint_left">8dp</dimen>
+    <dimen name="constraint_right">8dp</dimen>
+    <dimen name="expanded_margin_end">64dp</dimen>
+    <dimen name="expanded_margin_start">48dp</dimen>
+    <dimen name="iv_height_200dp">200dp</dimen>
+    <dimen name="tv_margin_left_right">18dp</dimen>
 </resources>
