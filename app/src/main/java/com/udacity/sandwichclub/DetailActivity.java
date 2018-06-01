@@ -23,7 +23,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView mtv_also_known_as;
     private TextView mIngredients;
     private TextView mPlace_of_origin;
-    private TextView mdecsription;
+    private TextView mDescription;
     private Toolbar mToolbar;
     private TextView mSandwichName;
 
@@ -37,7 +37,7 @@ public class DetailActivity extends AppCompatActivity {
         mtv_also_known_as = findViewById(R.id.tv_also_known_as);
         mIngredients = findViewById(R.id.tv_ingredients);
         mPlace_of_origin = findViewById(R.id.tv_place_of_origin);
-        mdecsription = findViewById(R.id.tv_description);
+        mDescription = findViewById(R.id.tv_description);
         mToolbar = findViewById(R.id.toolbar);
         mSandwichName = findViewById(R.id.tv_sandwich_name);
         setSupportActionBar(mToolbar);
@@ -76,8 +76,7 @@ public class DetailActivity extends AppCompatActivity {
                 .into(ingredientsIv);
 
 
-            mSandwichName.setText(sandwich.getMainName());
-
+        mSandwichName.setText(sandwich.getMainName());
 
 
     }
@@ -90,7 +89,7 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich sandwich) {
         /*populate all the data over here*/
         mPlace_of_origin.setText(getTheMissingData(sandwich.getPlaceOfOrigin()));
-        mdecsription.setText((sandwich.getDescription()));
+        mDescription.setText((sandwich.getDescription()));
         List<String> alsoKnownAs = sandwich.getAlsoKnownAs();
         String response = "";
         StringBuilder builder = new StringBuilder();
@@ -98,7 +97,7 @@ public class DetailActivity extends AppCompatActivity {
             builder.append(details).append("\n");
         }
 
-        mtv_also_known_as.setText(builder.toString());
+        mtv_also_known_as.setText(getTheMissingData(builder.toString()));
 
         response = "";
 

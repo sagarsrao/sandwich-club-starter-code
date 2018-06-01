@@ -9,6 +9,8 @@
 
     <!-- Content descriptions-->
     <string name="sandwich_picture_content_description">Sandwich picture</string>
+    <string name="text_with_bullet">\u2022 Text with a</string>
+
 
     <!-- Error messages-->
     <string name="detail_error_message">Sandwich data not available</string>

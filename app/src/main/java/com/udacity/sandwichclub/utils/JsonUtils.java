@@ -7,38 +7,44 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class JsonUtils {
 
     public static Sandwich parseSandwichJson(String json) {
 
+
+        Sandwich sandwich = null;
         try {
-            JSONObject mainjsonobject = new JSONObject(json);
-            JSONObject name = mainjsonobject.getJSONObject("name");
+            JSONObject sandwichJsonObjectroot = new JSONObject(json);
+
+            JSONObject name = sandwichJsonObjectroot.getJSONObject("name");
             String mainName = name.getString("mainName");
-            JSONArray alsoKnownAs = name.getJSONArray("alsoKnownAs");
-            ArrayList<String> alsoKnownAsList = new ArrayList<>();
-            for(int i=0; i<alsoKnownAs.length(); i++){
-                alsoKnownAsList.add(alsoKnownAs.getString(i));
-            }
+            JSONArray alsoKnownAsJsonArray = name.getJSONArray("alsoKnownAs");
+            List<String> alsoKnownAs = jsonArrayToStringList(alsoKnownAsJsonArray);
 
-            String placeOfOrigin = mainjsonobject.getString("placeOfOrigin");
-            String description = mainjsonobject.getString("description");
-            String image = mainjsonobject.getString("image");
-            JSONArray ingredients = mainjsonobject.getJSONArray("ingredients");
-            ArrayList<String> ingredientsList = new ArrayList<>();
-            for(int i=0; i<ingredients.length(); i++){
-                ingredientsList.add(ingredients.getString(i));
-            }
+            String placeOfOrigin = sandwichJsonObjectroot.getString("placeOfOrigin");
+            String description = sandwichJsonObjectroot.getString("description");
+            String image = sandwichJsonObjectroot.getString("image");
 
-            // return
-            return new Sandwich(mainName, alsoKnownAsList, placeOfOrigin, description, image, ingredientsList);
+            JSONArray ingredientsJsonArray = sandwichJsonObjectroot.getJSONArray("ingredients");
+            List<String> ingredients = jsonArrayToStringList(ingredientsJsonArray);
+
+            sandwich = new Sandwich(mainName, alsoKnownAs, placeOfOrigin, description, image, ingredients);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return null;
-    }
-
+        return sandwich;
 
     }
+
+    private static List<String> jsonArrayToStringList(JSONArray jsonArray) throws JSONException {
+        int arrayLength = jsonArray.length();
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < arrayLength; i++) {
+            result.add(jsonArray.getString(i));
+        }
+        return result;
+    }
+}
 

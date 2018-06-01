@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -13,5 +13,24 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="textViewStyle">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd" tools:targetApi="jelly_bean_mr1">
+            @dimen/constraint_right
+        </item>
+        <item name="android:layout_marginLeft" tools:targetApi="jelly_bean_mr1">
+            @dimen/constraint_left
+        </item>
+        <item name="android:layout_marginStart" tools:targetApi="jelly_bean_mr1">@dimen/constraint_left</item>
+
+        <item name="android:layout_marginRight">@dimen/constraint_right</item>
+        <item name="android:layout_marginTop">@dimen/constraint_top</item>
+
+
+    </style>
+
 
 </resources>
